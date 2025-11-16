@@ -1,19 +1,23 @@
+# daily_reminder.py
+# Personal Daily Reminder
+
 task = input("Enter your task: ")
 priority = input("Priority (high/medium/low): ").lower()
 time_bound = input("Is it time-bound? (yes/no): ").lower()
+
 match priority:
     case "high":
-        message = f"'{task}' is a high priority task"
+        priority_text = "high priority task"
     case "medium":
-        message = f"'{task}' is a medium priority task"
+        priority_text = "medium priority task"
     case "low":
-        message = f"'{task}' is a low priority task"
+        priority_text = "low priority task"
     case _:
-        message = f"'{task}' has an undefined priority"
+        priority_text = "task with undefined priority"
 
-# Add time-sensitive info
 if time_bound == "yes" and priority in ["high", "medium", "low"]:
-    message += " that requires immediate attention today!"
+    print(f"Reminder: '{task}' is a {priority_text} that requires immediate attention today!")
 elif time_bound == "no" and priority in ["high", "medium", "low"]:
-    message += ". Consider completing it when you have free time."
-print("\nReminder:", message)
+    print(f"Note: '{task}' is a {priority_text}. Consider completing it when you have free time.")
+else:
+    print(f"'{task}' has an undefined priority or time-bound status.")
